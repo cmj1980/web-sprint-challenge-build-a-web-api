@@ -1,20 +1,13 @@
 const express = require('express');
 const server = express();
-server.use(express.json());
-
-
+//const actionsRouter = require('./actions/actions-router');
 const projectsRouter = require('./projects/projects-router');
 server.use('/api/projects', projectsRouter);
-// const actionsRouter = require('./actions/actions-router');
-// server.use('/api/actions', actionsRouter)
+server.use(express.json());
+//server.use('/api/actions', actionsRouter)
 
 // Configure your server here
 // Build your actions router in /api/actions/actions-router.js
 // Build your projects router in /api/projects/projects-router.js
 // Do NOT `server.listen()` inside this file!
-
-server.get('/', (req, res) => {
-    res.send(`<h1>Welcome To Chuck 1st API!</h1>`)
-});
-
 module.exports = server;

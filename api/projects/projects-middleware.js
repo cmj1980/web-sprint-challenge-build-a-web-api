@@ -19,6 +19,25 @@ async function validateProjectId(req, res, next){
     }
 }
 
+async function validateProject(req, res, next){
+    const { name, description, completed } = req.body
+    if(!name || !name.trim()){
+        res.status(400).json({
+            message: 'Name field required'
+        })
+    } else if(!description || !description.trim()){
+        res.status(400).json({
+            message: 'Description field required'
+        })
+    } else {
+        req.name = name.trim()
+        req.description = description.trim()
+        req.completed = completed
+        next()
+    }
+}
+
 module.exports = { 
     validateProjectId,
+    validateProject
  }
