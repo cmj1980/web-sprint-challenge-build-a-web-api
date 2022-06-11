@@ -61,21 +61,21 @@ router.delete('/:id', validateProjectId, async (req, res, next) => {
     try {
         await Projects.remove(req.params.id)
         res.json(res.Projects)
-    } catch(err){
+    } catch (err) {
         next(err)
     }
 });
 
 router.get('/:id/actions', validateProjectId, async (req, res, next) => {
-   Projects.getProjectActions(req.params.id)
-   .then(actions => {
-       if(actions.length > 0){
-       res.status(200).json(actions)
-       } else {
-           res.status(404).json((actions))
-       }
-   })
-   .catch(next)
+    Projects.getProjectActions(req.params.id)
+        .then(actions => {
+            if (actions.length > 0) {
+                res.status(200).json(actions)
+            } else {
+                res.status(404).json((actions))
+            }
+        })
+        .catch(next)
 });
 
 
