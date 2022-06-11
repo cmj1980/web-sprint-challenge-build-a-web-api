@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', validateProjectId, async (req, res, next) => {
     try {
-        res.status(200).json()
+        res.status(200).json(req.params)
     } catch (err) {
         next(err)
     }
@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', validateProjectId, validateProject, async (req, res, next) => {
-    if (req.body === undefined) {
+    if (req.body.completed == undefined) {
         next({
             status: 400,
             message: 'Missing required fields'
