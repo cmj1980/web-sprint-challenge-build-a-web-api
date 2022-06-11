@@ -1,11 +1,12 @@
 // Write your "actions" router here!
-const Actions = require('./actions-model');
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
+const Actions = require('./actions-model')
 const { 
-    validateActionId,
-    validateAction,
- } = require('./actions-middlware')
+   validateActionId, 
+   validateAction 
+} = require('./actions-middlware')
+
 
 
 router.get('/', (req, res, next) => {
@@ -13,15 +14,42 @@ router.get('/', (req, res, next) => {
    .then(actions => {
       res.status(200).json(actions)
    })
-   .catch(next);
-});
+   .catch(next)
+})
 
 router.get('/:id', validateActionId, async (req, res, next) => {
    try {
-       res.status(200).json()
+       res.status(200).json(req.action)
    } catch (err) {
        next(err)
    }
 });
 
-module.exports = router
+router.post('/', validateAction, validateActionId, async (req, res, next) => {
+   try {
+      const newAction = await Actions.insert(req.body)
+      res.status(201).json(newAction)
+   } catch(err) {
+      next(err)
+   }
+});
+
+router.put('/:id', validateAction, validateActionId, async (req, res, next) => {
+    const { completed, description, notes, project_id } = req.body
+    try {
+       const updateActions = await Actions.update(req.params.id, {
+          completed: completed,
+          description: description,
+          notes: notes,
+          project_id: project_id,
+          id: req.params.id
+       })
+       res.status(200).json(updateActions)
+    } catch(err) {
+       next(err)       
+    }
+});
+
+
+
+module.exports = router;
