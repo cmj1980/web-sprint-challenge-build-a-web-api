@@ -8,7 +8,7 @@ server.use('/api/projects', projectsRouter);
 server.use('/api/actions', actionsRouter);
 
 server.get('/', (req, res) => {
-    res.send(`<h1>Unit 4 - SC1</h1>`);
+    res.send(`<h1>Welcome to my 1st API</h1>`);
 })
 
 server.use((err, req, res, next) => {
