@@ -1,13 +1,20 @@
 const express = require('express');
-const server = express();
-//const actionsRouter = require('./actions/actions-router');
 const projectsRouter = require('./projects/projects-router');
-server.use('/api/projects', projectsRouter);
-server.use(express.json());
-//server.use('/api/actions', actionsRouter)
+const actionsRouter = require('./actions/actions-router');
+const server = express();
 
-// Configure your server here
-// Build your actions router in /api/actions/actions-router.js
-// Build your projects router in /api/projects/projects-router.js
-// Do NOT `server.listen()` inside this file!
+server.use(express.json());
+server.use('/api/projects', projectsRouter);
+server.use('/api/actions', actionsRouter);
+
+server.get('/', (req, res) => {
+    res.send(`<h1>Unit 4 - SC1</h1>`);
+})
+
+server.use((err, req, res, next) => {
+    res.status(err.status || 500).json({
+        message: err.message || 'Internal Server Error'
+    });
+})
+
 module.exports = server;
