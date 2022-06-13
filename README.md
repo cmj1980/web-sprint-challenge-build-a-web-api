@@ -147,7 +147,36 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+
+ Node is a sever side language like many others. What sets it apart from others, is it's use of Google Chrome's V8 Javascript Engine. Taking it out of the browser and enabling it run on servers. It encourages an asynchronous coding which makes for faster code while at the same time helping to avoid multithreaded problems. It also offers many useful libraries as well as letting us share code between browser and server. While node has it's own way of handling HTTP, requests and objects. Express  simplifies this by handling them behind the scences. Express's fraemwork gives the ability handle API calls for web apps in a much more effcient matter through use of routing, middleware, and request handlers. While considered primitive it is a very rubust framework and still widely used.    
+
 1. Understand and explain the use of Middleware.
+Middleware is a layer of code or software that lies between a server and client or webapp . Essentually middleare functions as "plumbing" between two applications creating a "pipe" for data and databases to passed between. There are many different types if middleware for example. There is Message Oriented Middleware, Remote Procedure Call Middleware (RPC), Database Middleware, Web Middleware and these are just to name a few.  
+
 1. The basic principles of the REST architectural style.
+Representational State Transfer (REST) Is a layered architectural style that attemps to minimize latency and netwrok commuications, while maximizing independence and scalability. The basic princibles of REST architecture are client-server, stateless, caacheable, uniform interface, layered system, code on demand.
+
+Client-Server Architecture.
+Client and Server have a seperation of concerns. This seperation allows the client and the server to evolve independently. The only requirement is the interface be the same.  
+
+Stateless.
+This means communication between client and server always contains the information needed to perform the request. There is no session state kept in the server. Authentication for resources is needed, the client will have to authenticate itself. 
+
+Cacheable.
+Server, Client and Components can all cache resources to help improve performance.
+
+Uniform Interface.
+This simplifies the architecture, as all components follow the same rules making it easier to understand the interactions between the different components of the system.
+
+Layered System.
+Components can not see beyond the layer that they are interacting with. In short having independent components allows them to be replaced or extended easily.
+
+Code on Demand.
+This is the only optional constraint. In short what it means is, you are able to provide executable code from the server to client when needed or upon request. 
+
 1. Understand and explain the use of Express Routers.
+Express router is a class that we use to create request handlers. This also help to reinforce the "Layer System" constraint helping us to align with the principles of REST. It does not just provide routing either. It can be extended to handle validation, errors like 404 and others. It also allows you to use multiple behaviors for the same route depending on the HTTP method used. 
+
+
 1. Describe tooling used to manually test the correctness of an API.
+"Tooling" is the use of various tools to help evaluate an API. There are many tools avaiable for us to use. For example POSTMAN is a great tool that is open source and provides a GUI to help us perform multiple HTTP requests. Allowinig us to pass data to and from the server, helping us to examine responses, and send various payloads. They also help with workflow allowing to store cycles of various endpoints within a single application. Thus allowing us to return and examine that endpoints complete cycle saving time and making us more effcient in out performance as a dev.  
